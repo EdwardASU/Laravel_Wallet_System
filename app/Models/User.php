@@ -29,4 +29,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Get the wallet associated with the user.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<Wallet, $this>
+     */
+    public function wallet(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Wallet::class);
+    }
 }

@@ -15,7 +15,11 @@ class WalletFactory extends Factory
      *
      * @return array<string, mixed>
      */
+    public function definition(): array
+    {
         return [
+            'user_id' => \App\Models\User::factory(),
             'balance' => fake()->randomFloat(2, 0, 1000),
         ];
+    }
 }

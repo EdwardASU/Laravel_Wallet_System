@@ -13,10 +13,11 @@ abstract class Controller
         ], $code);
     }
 
-    public function error($message, $code = 400)
+    public function error($message, $data = null, $code = 400)
     {
         return response()->json([
             'message' => $message,
+            'data' => $data
         ], $code);
     }
 }

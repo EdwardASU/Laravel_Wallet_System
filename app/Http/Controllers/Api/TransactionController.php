@@ -39,4 +39,26 @@ class TransactionController extends Controller
 
         return $this->error($transaction['message'], $transaction['data']);
     }
+
+    public function balance($wallet_id)
+    {
+        $result = TransactionService::balance($wallet_id);
+
+        if ($result['status']) {
+            return $this->success($result['data'], $result['message']);
+        }
+
+        return $this->error($result['message'], $result['data']);
+    }
+
+    public function history($wallet_id)
+    {
+        $result = TransactionService::history($wallet_id);
+
+        if ($result['status']) {
+            return $this->success($result['data'], $result['message']);
+        }
+
+        return $this->error($result['message'], $result['data']);
+    }
 }

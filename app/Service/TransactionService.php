@@ -88,11 +88,49 @@ class TransactionService
 
             $data = [
                 'status' => false,
-                'message' => 'Withdrawl failed',
+                'message' => 'Withdrawal failed',
                 'data' => $e->getMessage(),
             ];
 
             return $data;
         }
+    }
+
+    public static function balance($wallet_id)
+    {
+        $wallet = Wallet::find($wallet_id);
+
+        if (!$wallet) {
+            return [
+                'status' => false,
+                'message' => 'Wallet not found',
+                'data' => null,
+            ];
+        }
+
+        return [
+            'status' => true,
+            'message' => 'Wallet balance retrieved',
+            'data' => $wallet->balance,
+        ];
+    }
+
+    public static function history($wallet_id)
+    {
+        $wallet = Wallet::find($wallet_id);
+
+        if (!$wallet) {
+            return [
+                'status' => false,
+                'message' => 'Wallet not found',
+                'data' => null,
+            ];
+        }
+
+        return [
+            'status' => true,
+            'message' => 'Transaction history retrieved',
+            'data' => $wallet->transactions()->latest()->get(),
+        ];
     }
 }

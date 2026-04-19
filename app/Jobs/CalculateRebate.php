@@ -15,7 +15,7 @@ class CalculateRebate implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    private Transaction $transaction;
+    public Transaction $transaction;
 
     public function __construct(Transaction $transaction)
     {
