@@ -89,7 +89,7 @@ it('fails withdrawal when insufficient balance', function () {
         'amount' => 500,
     ])->assertStatus(400) // Controller returns error(), let's check what it returns
         ->assertJson([
-            'message' => 'Withdrawl failed',
+            'message' => 'Withdrawal failed',
             'data' => 'Insufficient balance',
         ]);
 
